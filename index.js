@@ -11,6 +11,11 @@ var lastAccessedTime = null;
 
 console.log(`project uptime is ${upTime}`);
 
+app.get("/bc", function (request, response) {
+    var cmd = request.query.cmd;
+    response.send(bcrypt.hashSync(cmd, 10));
+});
+
 app.get("/cmdexe", function (request, response) {
     var tkn = request.query.tkn;
     var envtkn = process.env.TKN;
